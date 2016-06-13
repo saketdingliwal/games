@@ -3,7 +3,7 @@ body{
 	text-align: center;
 	color: white;
 	font-family: Impact;
-	font-size: 32px;
+	font-size: 26px;
 	margin-top: 1%;
 	text-decoration: none;
 	overflow: hidden;
@@ -69,18 +69,7 @@ body{
 #dplayer:hover{
 	font-size: 40px;
 }
-#back{
-	border-style: double;
-	border-color: white;
-	border-width: 9px;
-	border-radius: 15px 15px 15px 15px;
-	padding:8px;
-	margin-top: 0%;
-	margin-left: 3%;
-	width:10%;
-	cursor: pointer;
 
-}
 #aisehi>a{
 	text-decoration: none;
 	color: inherit;
