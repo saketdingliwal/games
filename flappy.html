@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="1350" height="580"></canvas>
+	<script  type="text/javascript">
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		var count = 0;
+		var gravity=0.07;
+		context.beginPath();
+		context.moveTo(0,0);
+		context.lineTo(canvas.width,0);
+		context.stroke();
+		context.closePath();
+		context.beginPath();
+		context.moveTo(0,canvas.height);
+		context.lineTo(canvas.width,canvas.height);
+		context.stroke();
+		context.closePath();
+bird=
+		{
+			x:20,
+			y:canvas.height/2,
+			vx:0.1,
+			vy:0,
+			rad:15
+		};
+var a=[];
+for(var i=0;i<1000;i++)
+{
+a.push(Math.random());
+if(a[i]>=.8){a[i]=a[i]/2;}	
+}
+var stelac = [];
+		var stagm =[];
+		rectana=
+{
+x:0
+};stelac.push(rectana);
+rectanb=
+{
+x:0
+};stagm.push(rectanb);
+for(var i=0;i<1000;i++)
+{
+	rectana=
+		{
+			x:450+stelac[i].x,
+			vx:-1,
+			vy:.1,
+			h:a[i]*canvas.height,
+			y:a[i]*canvas.height/2,
+			w:100
+		};
+		stelac.push(rectana);
+		rectanb=
+		{
+			x:450+stagm[i].x,
+			vx:-1,
+			vy:0,
+			h:canvas.height-stelac[i+1].h-116,
+			y:canvas.height-(canvas.height-stelac[i+1].h-116)/2,
+			w:100
+		};
+		stagm.push(rectanb);
+}			
+			
+birdMove();
+canvas.addEventListener("click",moveUp);
+function moveUp(event)
+		{
+			bird.y-=40;
+			bird.vy=0;
+			bird.vx=0.2;
+		}
+function birdMove()
+		{
+					
+			context.clearRect(0,1,canvas.width,canvas.height-2);// clearing only the inside of rect and not the boundary
+			context.beginPath(); // drawing the main circle
+			context.arc(bird.x,bird.y,bird.rad,0,2*Math.PI,true);
+			context.fillStyle = "#F215F2"; // setting colour
+			context.fill();
+			context.closePath();
+
+			
+			bird.x+=bird.vx;
+			bird.vx-=0.0001;
+			bird.vy+=gravity;
+			bird.y+=bird.vy;
+
+
+			
+			if(bird.y-bird.rad<=0 || bird.y+bird.rad>=canvas.height)
+			{alert("game over");gameEnd();birdMove.stop();}
+
+			var d=[];
+			var e=[];
+			var f=[];
+			var g=[];
+
+			for(var j=1;j<1000;j++)
+			{
+			context.beginPath(); // drawing the main circle
+			context.rect(stelac[j].x-50,0,100,stelac[j].h);
+			context.fillStyle = "#FF0000"; // setting colour
+			context.fill();
+			context.rect(stagm[j].x-50,stagm[j].y-(stagm[j].h/2),100,stagm[j].h);
+			context.fillStyle = "#FF0000"; // setting colour
+			context.fill();
+			context.closePath();
+			stelac[j].x-=1.5;
+			stagm[j].x-=1.5;
+			d.push(bird.x+bird.rad-stelac[j].x+50);
+			e.push(bird.y+bird.rad-stagm[j].y+stagm[j].h/2);
+			f.push(bird.x-bird.rad-stelac[j].x-50);
+			g.push(bird.y-bird.rad-stelac[j].y-stelac[j].h/2);
+			
+
+
+				}
+				for(var j=0;j<1000;j+=1)
+				{
+				if(g[j]<=0 && d[j]>=0 && f[j]<=0)
+				{alert("game over");gameEnd();birdMove.stop();}	
+				}
+
+				for(var j=0;j<1000;j+=1)
+				{
+				if(e[j]>=0 && d[j]>=0 && f[j]<=0)
+				{alert("game over");gameEnd();birdMove.stop();}	
+				}
+				
+			
+			animate = setTimeout(birdMove,1000/600);// drawing 60 times every second, 1000 stands for 1000 ms
+		}
+function gameEnd()
+{
+	for(var j=0;j<1000;j++)
+{
+if(bird.x-bird.rad-stagm[j].x-50>=0)
+{count+=1;}
+else
+{if(count==0){count=1;}
+	alert("the score is  "+(count-1));break;}
+}
+}
+
+
+</script>
+	<div align="center">
+		Hello! Click to begin the fun.
+	</div>
+</body>
+</html>
+

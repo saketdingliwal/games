@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="1350" height="580"></canvas>
+	<script  type="text/javascript">
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		var count = 0;
+		var gravity=0.001;
+		var rectan = [];
+		
+		context.beginPath();
+		context.moveTo(0,0);
+		context.lineTo(canvas.width,0);
+		context.stroke();
+		context.closePath();
+		context.beginPath();
+		context.moveTo(0,canvas.height);
+		context.lineTo(canvas.width,canvas.height);
+		context.stroke();
+		context.closePath();
+bird=
+		{
+			x:20,
+			y:canvas.height/2,
+			vx:.4,
+			vy:0,
+			rad:15
+		};
+
+rectana=
+
+		{
+			x:225,
+			y:canvas.height/10,
+			vx:-.4,
+			vy:0,
+			h:canvas.height/5,
+			w:50
+		};
+
+rectanb=
+		{
+			x:225,
+			y:7*canvas.height/10,
+			vx:-.4,
+			vy:0,
+			h:3*canvas.height/5,
+			w:50
+		};
+
+rectanc=
+		{
+			x:675,
+			y:3*canvas.height/10,
+			vx:-.4,
+			vy:0,
+			h:3*canvas.height/5,
+			w:50
+		};
+rectand=
+		{
+			x:675,
+			y:9*canvas.height/10,
+			vx:-.4,
+			vy:0,
+			h:canvas.height/5,
+			w:50
+		};
+rectane=
+		{
+			x:1125,
+			y:canvas.height/5,
+			vx:-.4,
+			vy:0,
+			h:2*canvas.height/5,
+			w:50
+		};
+rectanf=
+		{
+			x:1125,
+			y:4*canvas.height/5,
+			vx:-.4,
+			vy:0,
+			h:2*canvas.height/5,
+			w:50
+		};
+			
+birdMove();
+canvas.addEventListener("click",moveUp);
+function moveUp(event)
+		{
+			bird.y-=40;
+			bird.vy=0;
+		}
+function birdMove()
+		{
+			rectan.push(rectana);
+			rectan.push(rectanb);
+			rectan.push(rectanc);
+			rectan.push(rectand);
+			rectan.push(rectane);
+			rectan.push(rectanf);			
+			context.clearRect(0,1,canvas.width,canvas.height-2);// clearing only the inside of rect and not the boundary
+			context.beginPath(); // drawing the main circle
+			context.arc(bird.x,bird.y,bird.rad,0,2*Math.PI,true);
+			context.fillStyle = "#F215F2"; // setting colour
+			context.fill();
+			context.closePath();
+
+			
+			bird.x+=.2;
+			bird.vy+=gravity;
+			bird.y+=bird.vy;
+
+
+			
+			if(bird.y-bird.rad<=0 || bird.y+bird.rad>=canvas.height)
+			{alert("game over");gameEnd();birdMove.stop();}
+
+			var d=[];
+			var e=[];
+			var f=[];
+			var g=[];
+
+			for(var i=0;i<6;i++)
+			{
+			context.beginPath(); // drawing the main circle
+			context.rect(rectan[i].x-25,rectan[i].y-(rectan[i].h/2),100,rectan[i].h);
+			context.fillStyle = "#FF0000"; // setting colour
+			context.fill();
+			context.closePath();
+			rectan[i].x-=.1;
+			d.push(bird.x+bird.rad-rectan[i].x+25);
+			e.push(bird.y+bird.rad-rectan[i].y+rectan[i].h/2);
+			f.push(bird.x-bird.rad-rectan[i].x-25);
+			g.push(bird.y-bird.rad-rectan[i].y-rectan[i].h/2);
+			
+
+
+				}
+				for(var j=0;j<6;j+=2)
+				{
+				if(g[j]<=0 && d[j]>=0 && f[j]<=0)
+				{alert("game over");gameEnd();birdMove.stop();}	
+				}
+
+				for(var j=1;j<6;j+=2)
+				{
+				if(e[j]>=0 && d[j]>=0 && f[j]<=0)
+				{alert("game over");gameEnd();birdMove.stop();}	
+				}
+				
+			
+			animate = setTimeout(birdMove,1000/600);// drawing 60 times every second, 1000 stands for 1000 ms
+		}
+
+function gameEnd()
+{
+if(bird.x-bird.rad-rectan[5].x-25>0){alert("score is 3");}
+else if(bird.x-bird.rad-rectan[3].x-25>0){alert("score is 2");}
+else if(bird.x-bird.rad-rectan[1].x-25>0){alert("score is 1");}
+else {alert("score is 0");}
+}
+
+
+</script>
+	<div align="center">
+		Hello! Click to begin the fun.
+	</div>
+</body>
+</html>
+

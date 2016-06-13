@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="580" height="580"></canvas>
+	<script  type="text/javascript">
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		context.beginPath();
+		context.rect(0,0,canvas.width,canvas.height);
+		context.fill(); // do not fill and just draw the boundary
+		context.closePath();
+		
+		
+
+		var counter=0;
+		bird=
+		{
+			x:canvas.width/2,
+			y:canvas.height/2,
+			rad:20
+		};
+		block={x:1,y:1,h:40,w:40,vx:0,vy:0};
+
+
+		repeat();
+		var fast=0;
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+    	
+        case 38:
+            block.vy=-5;
+            block.vx=0;
+
+            break;
+
+        case 37:
+            block.vx=-5;
+            block.vy=0;
+            break;
+
+        case 40:
+            block.vy=5;
+            block.vx=0;
+            break;
+
+        case 39:
+            block.vy=0;
+            block.vx=5;
+            break;
+            }};  
+
+
+		function repeat()
+		{
+			context.clearRect(1,1,canvas.width-2,canvas.height-2);
+			context.beginPath(); // drawing the main circle
+			context.rect(block.x,block.y,block.w,block.h);
+			context.fillStyle = "#FF0000"; // setting colour
+			context.fill();
+			context.closePath();
+				
+
+			
+
+
+
+			block.x+=block.vx;
+			block.y+=block.vy;
+			context.beginPath(); // drawing the main circle
+            context.arc(bird.x,bird.y,bird.rad,0,2*Math.PI,true);
+            context.fillStyle = "#F215F2"; // setting colour
+            context.fill();
+            context.closePath();
+
+            if(((block.y+block.h>bird.y-bird.rad && block.y+block.h<bird.y+bird.rad ) || (block.y>bird.y-bird.rad && block.y<bird.y+bird.rad)) && ((block.x>bird.x-bird.rad && block.x<bird.x+bird.rad) || (block.x+block.w>bird.x-bird.rad && block.x+block.w<bird.x+bird.rad)))
+            {	
+            	
+            	bird.x=Math.random()*canvas.width;
+            	if(bird.x<30){bird.x+=30;}
+            	if(bird.x>canvas.width-30){bird.x-=30;}
+            	bird.y=Math.random()*canvas.height;
+            	if(bird.y<30){bird.y+=30;}
+            	if(bird.y>canvas.height-30){bird.y-=30;}
+            	counter++;
+            	fast+=3;
+            	
+            }
+
+			if(block.x<0 || block.x+block.w>canvas.width || block.y<0 || block.y+block.h>canvas.height)
+			{
+				alert("game over! the score is  " + counter);
+				
+				repeat.stop();
+			}
+			context.font = "60px Arial";
+			context.fillText(counter,canvas.width-80,60);
+
+			animate = setTimeout(repeat,1000/(30+fast));
+		}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="1350" height="580"></canvas>
+	<script  type="text/javascript">
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		context.beginPath();
+		context.moveTo(0,canvas.height/3);
+		context.lineTo(canvas.height,canvas.height/3);
+		context.lineWidth=10;
+		context.strokeStyle = '#ff0000';
+		context.stroke();
+		context.moveTo(0,2*canvas.height/3);
+		context.lineTo(canvas.height,2*canvas.height/3);
+		context.lineWidth=10;
+		context.strokeStyle = '#ff0000';
+		context.stroke();
+		context.moveTo(canvas.height/3,0);
+		context.lineTo(canvas.height/3,canvas.height);
+		context.lineWidth=10;
+		context.strokeStyle = '#ff0000';
+		context.stroke();
+		context.moveTo(2*canvas.height/3,0);
+		context.lineTo(2*canvas.height/3,canvas.height);
+		context.lineWidth=10;
+		context.strokeStyle = '#ff0000';
+		context.stroke();
+		context.closePath();
+		context.beginPath();
+		context.moveTo(25,25);
+		context.lineTo(canvas.height/3-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,25);
+		context.lineTo(25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		var turn =0;
+		var array=[];
+		var a=1;
+		var b=5;
+		var c=5,d=5,e=5,f=5,g=5,h=5,i =5;
+canvas.addEventListener("click",getPosition);
+		
+		function getPosition(event)
+		{
+			var cx = event.clientX;
+			var cy = event.clientY;
+			if(cx<=canvas.height && cy<=canvas.height )
+		{turn=turn+1;}
+if(cx<=canvas.height/3 && cy<=canvas.height/3)
+		{if(a>=2)
+			{context.beginPath();
+			context.arc(canvas.height/6,canvas.height/6,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		a=0;}else{turn=turn-1;}
+
+
+		}
+else if(cx<=2*canvas.height/3 && cy<=canvas.height/3)
+		{if(b>=2)
+			{context.beginPath();
+			context.arc(canvas.height/2,canvas.height/6,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		b=0;}else{turn=turn-1;}
+		}
+		else if(cx<=canvas.height && cy<=canvas.height/3)
+		{if(c>=2)
+		{context.beginPath();
+			context.arc(5*canvas.height/6,canvas.height/6,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		c=0;}else{turn=turn-1;}
+		}
+		else if(cx<=canvas.height/3 && cy<=2*canvas.height/3)
+		{if(d>=2)
+			{context.beginPath();
+			context.arc(canvas.height/6,canvas.height/2,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		d=0;}else{turn=turn-1;}
+		}
+else if(cx<=2*canvas.height/3 && cy<=2*canvas.height/3)
+		{if(e>=2)
+		{context.beginPath();
+			context.arc(canvas.height/2,canvas.height/2,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		e=0;}else{turn=turn-1;}
+		}
+		else if(cx<=canvas.height && cy<=2*canvas.height/3)
+		{if(f>=2)
+			{context.beginPath();
+			context.arc(5*canvas.height/6,canvas.height/2,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		f=0;}else{turn=turn-1;}
+		}
+		else if(cx<=canvas.height/3 && cy<=canvas.height)
+		{if(g>=2)
+			{context.beginPath();
+			context.arc(canvas.height/6,5*canvas.height/6,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		g=0;}else{turn=turn-1;}
+		}
+else if(cx<=2*canvas.height/3 && cy<=canvas.height)
+		{if(h>=2)
+			{context.beginPath();
+			context.arc(canvas.height/2,5*canvas.height/6,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		h=0;}else{turn=turn-1;}
+		}
+		else if(cx<=canvas.height && cy<=canvas.height)
+		{if(i>=2)
+			{context.beginPath();
+			context.arc(5*canvas.height/6,5*canvas.height/6,70,0,2*Math.PI,true);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		i=0;}else{turn=turn-1;}
+		}
+
+
+
+
+
+
+
+
+
+
+
+if((turn==1 && (b==0 || f==0 || c==0)) || (turn==3 && i==0 && g>2))
+{simpleMove();stopMove();
+context.beginPath();
+		if( turn==1 || (turn==3 && i==0))
+		{context.moveTo(25,2*canvas.height/3+25);
+		context.lineTo(canvas.height/3-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,2*canvas.height/3+25);
+		context.lineTo(25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		g=1;
+		turn=turn+1;
+}}
+else if(turn==1 && (d==0 || h==0 || g==0 || i==0))
+{simpleMove();stopMove();
+	if(turn==1){	context.beginPath();
+		context.moveTo(2*canvas.height/3+25,25);
+		context.lineTo(canvas.height-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,25);
+		context.lineTo(2*canvas.height/3+25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		c=1;turn=turn+1;}}
+else if((turn==3 && (b==0 || d==0) && i>2) ||  (turn==1 && e==0))
+{simpleMove();stopMove();
+	if(turn==3 || (turn==1 && e==0))
+	{context.beginPath();
+		context.moveTo(2*canvas.height/3+25,2*canvas.height/3+25);
+		context.lineTo(canvas.height-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,2*canvas.height/3+25);
+		context.lineTo(2*canvas.height/3+25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		i=1;turn=turn+1;}}
+else{simpleMove();stopMove();}
+
+
+
+
+
+
+if((a==1 && b==1 && c==1) || (d==1 && e==1 && f==1) || (g==1 && h==1 && i==1) || (a==1 && d==1 && g==1) || (b==1 && e==1 && h==1) || (c==1 && f==1 && i==1) || (a==1 && e==1 && i==1) || (c==1 && e==1 && g==1))
+			{
+				
+				context.font = "50px Arial";
+			context.fillText("Hey!Hey! you are beaten",canvas.width/4,canvas.height/2);
+			}
+		else if((a==0 && b==0 && c==0) || (d==0 && e==0 && f==0) || (g==0 && h==0 && i==0) || (a==0 && d==0 && g==0) || (b==0 && e==0 && h==0) || (c==0 && f==0 && i==0) || (a==0 && e==0 && i==0) || (c==0 && e==0 && g==0))
+			{
+				context.font = "50px Arial";
+			context.fillText("great work",canvas.width/4,canvas.height/2);}
+		else if(turn==8){
+		
+				context.font = "50px Arial";
+			context.fillText("so you have the wit! a draw",canvas.width/4,canvas.height/2);
+		}
+}
+
+
+
+
+
+
+
+
+
+function simpleMove()
+{
+if(((a==1 && b==1)||(g==1 && e==1)|| (i==1 && f==1) )  && c>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(2*canvas.height/3+25,25);
+		context.lineTo(canvas.height-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,25);
+		context.lineTo(2*canvas.height/3+25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		c=1;turn=turn+1;
+}
+else if(((d==1 && e==1)|| (c==1 && i==1)) && f>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(2*canvas.height/3+25,canvas.height/3+25);
+		context.lineTo(canvas.height-25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,canvas.height/3+25);
+		context.lineTo(2*canvas.height/3+25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		f=1;turn=turn+1;
+}
+else if(((g==1 && h==1) || (c==1 && f==1) || (a==1 && e==1)) && i>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(2*canvas.height/3+25,2*canvas.height/3+25);
+		context.lineTo(canvas.height-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,2*canvas.height/3+25);
+		context.lineTo(2*canvas.height/3+25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		i=1;
+		turn=turn+1;
+}
+else if(((h==1 && i==1) || (a==1 && d==1) || (c==1 && e==1)) && g>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(25,2*canvas.height/3+25);
+		context.lineTo(canvas.height/3-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,2*canvas.height/3+25);
+		context.lineTo(25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		g=1;turn=turn+1;
+}
+else if(((b==1 && e==1) || (g==1 && i==1) ) && h>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(canvas.height/3+25,2*canvas.height/3+25);
+		context.lineTo(2*canvas.height/3-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(2*canvas.height/3-25,2*canvas.height/3+25);
+		context.lineTo(canvas.height/3+25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		h=1;turn=turn+1;}
+else if(((b==1 && c==1) ||  (d==1 && g==1) ||  (e==1 && i==1)) && a>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(25,25);
+		context.lineTo(canvas.height/3-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,25);
+		context.lineTo(25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		a=1;turn=turn+1;}
+else if(((a==1 && c==1)|| (e==1 && h==1)) && b>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(canvas.height/3+25,25);
+		context.lineTo(2*canvas.height/3-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(2*canvas.height/3-25,25);
+		context.lineTo(canvas.height/3+25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		b=1;turn=turn+1;}
+else if(((a==1 && i==1) || (c==1 && g==1) || (d==1 && f==1) ||(b==1 && h==1)) && e>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(canvas.height/3+25,canvas.height/3+25);
+		context.lineTo(2*canvas.height/3-25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(2*canvas.height/3-25,canvas.height/3+25);
+		context.lineTo(canvas.height/3+25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		e=1;turn=turn+1;}
+else if(((e==1 && f==1) || (a==1 && g==1) ) && d>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(25,canvas.height/3+25);
+		context.lineTo(canvas.height/3-25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,canvas.height/3+25);
+		context.lineTo(25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		d=1;turn=turn+1;}
+}
+
+
+
+
+
+
+
+
+
+function stopMove()
+{
+if(((e==0 && f==0) || (a==0 && g==0)) && d>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(25,canvas.height/3+25);
+		context.lineTo(canvas.height/3-25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,canvas.height/3+25);
+		context.lineTo(25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		d=1;turn=turn+1;}
+
+else if(((a==0 && i==0) || (c==0 && g==0) || (d==0 && f==0) || (b==0 && h==0)) && e>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(canvas.height/3+25,canvas.height/3+25);
+		context.lineTo(2*canvas.height/3-25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(2*canvas.height/3-25,canvas.height/3+25);
+		context.lineTo(canvas.height/3+25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		e=1;turn=turn+1;}
+else if(((a==0 && c==0) || (e==0 && h==0)) && b>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(canvas.height/3+25,25);
+		context.lineTo(2*canvas.height/3-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(2*canvas.height/3-25,25);
+		context.lineTo(canvas.height/3+25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		b=1;turn=turn+1;}
+else if(((b==0 && c==0) ||(d==0 && g==0) || (e==0 && i==0)) && a>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(25,25);
+		context.lineTo(canvas.height/3-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,25);
+		context.lineTo(25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		a=1;turn=turn+1;}
+else if(((b==0 && e==0) || (g==0 && i==0)) && h>2 && turn%2==1)
+{context.beginPath();
+		context.moveTo(canvas.height/3+25,2*canvas.height/3+25);
+		context.lineTo(2*canvas.height/3-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(2*canvas.height/3-25,2*canvas.height/3+25);
+		context.lineTo(canvas.height/3+25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		h=1;turn=turn+1;}
+else if(((h==0 && i==0)||(a==0 && d==0) || (c==0 && e==0)) && g>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(25,2*canvas.height/3+25);
+		context.lineTo(canvas.height/3-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height/3-25,2*canvas.height/3+25);
+		context.lineTo(25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		g=1;turn=turn+1;
+}
+else if(((g==0 && h==0) || (c==0 && f==0) || (a==0 && e==0)) && i>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(2*canvas.height/3+25,2*canvas.height/3+25);
+		context.lineTo(canvas.height-25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,2*canvas.height/3+25);
+		context.lineTo(2*canvas.height/3+25,canvas.height-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		i=1;
+		turn=turn+1;
+}
+else if(((d==0 && e==0) || (c==0 && i==0)) && f>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(2*canvas.height/3+25,canvas.height/3+25);
+		context.lineTo(canvas.height-25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,canvas.height/3+25);
+		context.lineTo(2*canvas.height/3+25,2*canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		f=1;turn=turn+1;
+}
+else if(((a==0 && b==0) || (g==0 && e==0) ||(i==0 && f==0))  && c>2 && turn%2==1)
+{
+context.beginPath();
+		context.moveTo(2*canvas.height/3+25,25);
+		context.lineTo(canvas.height-25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.moveTo(canvas.height-25,25);
+		context.lineTo(2*canvas.height/3+25,canvas.height/3-25);
+		context.lineWidth=10;
+		context.strokeStyle = '#00ffff';
+		context.stroke();
+		context.closePath();
+		array.push(1);
+		c=1;turn=turn+1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}</script>
+	<div align="center">
+		Hello! Click to begin the fun.My computer takes the first turn and the its favourite cross(x).ande now i challenge you if you could beat it!!!
+	</div>
+</body>
+</html>

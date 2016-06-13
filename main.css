@@ -1,0 +1,92 @@
+body{
+	background: url("gameback2.jpg") no-repeat top left;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+	color: white;
+	font-family: Impact;
+	font-size: 32px;
+	margin-top: 1%;
+	text-decoration: none;
+	overflow: hidden;
+	
+
+
+}
+#text{
+	margin-top: -7%;
+	margin-left: -63%;
+	font-size: 22px;
+	font-family: Arial;
+
+}
+
+
+div.image{
+
+	content: url("copyrights.jpg");
+	border-style: solid;
+	border-radius: 50% 50% 50% 50%;
+	height: 7%;
+	width: 7%;
+}
+.hoverable {
+      cursor:default;
+     
+      text-decoration:none;
+    }
+    .hoverable .hover {
+      display:none;
+    }
+    .hoverable:hover .normal {
+      display:none;
+    }
+    .hoverable:hover .hover {
+      display:inline;  /* CHANGE IF FOR BLOCK ELEMENTS */
+    }
+#gamepack{
+	border-style: double;
+	border-color: white;
+	border-width: 9px;
+	border-radius: 15px 15px 15px 15px;
+	padding:8px;
+	margin-right: 5%;
+	margin-top: 1%;
+	margin-left: 55%;
+	background: rgba(0,0,0,0.4);
+
+}
+#ttt,#c4,#train,#flappy,#fff,#snake{
+	border-style: solid;
+	border-color: yellow;
+	border-radius: 15px 15px 15px 15px;
+	padding: 8px;
+	height: 40px;
+	cursor: pointer;
+	-webkit-transition:-webkit-transform 1s,opacity 1s,height 1s;
+
+}
+
+#gamepack:hover{
+	background: rgba(0,0,0,0.6);
+
+}
+#ttt:hover,#c4:hover,#train:hover,#flappy:hover,#fff:hover,#snake:hover{
+background: rgba(0,0,0,0.8);
+-webkit-transform:rotate(360deg);
+height:110px;
+
+
+}
+#subt{
+	font-family: Arial;
+	font-size:20px;
+	text-align: center;
+	line-height: 0.5;
+}
+#gamepack>a{
+	text-decoration: none;
+	color:inherit;
+
+}
+

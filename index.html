@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME</title>
+</head>
+<body>
+	<canvas id="gameSpace" width="1350" height="580"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('gameSpace'); // fetching canvas as a variable
+		var context = canvas.getContext('2d'); // everything is drawn using context
+		var counter = 0;
+
+		context.beginPath();
+		context.rect(0,0,canvas.width,canvas.height);
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.closePath();
+
+		context.beginPath();
+		context.rect(525,140,300,300);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.closePath();
+
+		context.beginPath();
+		context.moveTo(625,140);
+		context.lineTo(625,440);
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.moveTo(725,140);
+		context.lineTo(725,440);
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.moveTo(525,240);
+		context.lineTo(825,240);
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.moveTo(525,340);
+		context.lineTo(825,340);
+		context.strokeStyle = '#00ff00';
+		context.stroke();
+		context.closePath();
+		context.fillText("X",530,145);
+
+
+		var a = [3][3];
+
+		for (var i=0;i<3;i++)
+		{
+			for (var j=0;j<3;j++)
+			{
+				a[i][j]=0;
+			}
+		}
+
+		canvas.addEventListener("click",clicker);
+
+		function clicker (event)
+		{
+			var cx = event.clientX;
+			var cy = event.clientY;
+
+			if (cx<625 && cx >525)
+			{
+				if (cy>140 && cy<240)
+				{
+					//a[0][0]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",530,145);
+						//a[0][0]++;
+					}
+					else
+					{
+						context.fillText("O",530,145);
+					}
+
+				}
+				if (cy>240 && cy<340)
+				{
+					//a[1][0]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",530,245);
+						//a[1][0]++;
+					}
+					else
+						context.fillText("O",530,245);
+				}
+				if (cy>340 && cy<440)
+				{
+					//a[2][0]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",530,345);
+						//a[2][0]++;
+					}
+					else
+						context.fillText("O",530,345);
+				}
+			}
+
+			if (cx<725 && cx >625)
+			{
+				if (cy>140 && cy<240)
+				{
+					//a[0][1]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",630,145);
+						//a[0][1]++;
+					}
+					else
+						context.fillText("O",630,145);
+				}
+				if (cy>240 && cy<340)
+				{
+					//a[1][1];
+					if (counter%2==1)
+					{
+						context.fillText("X",630,245);
+						//a[1][1]++;
+					}
+					else
+						context.fillText("O",630,245);
+				}
+				if (cy>340 && cy<440)
+				{
+					//a[2][1]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",630,345);
+						//a[2][1]++;
+					}
+					else
+						context.fillText("O",630,345);
+				}
+			}
+
+			if (cx<825 && cx >725)
+			{
+				if (cy>140 && cy<240)
+				{
+					//a[0][2]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",730,145);
+						//a[0][2]++;
+					}
+					else
+						context.fillText("O",730,145);
+				}
+				if (cy>240 && cy<340)
+				{
+					//a[1][2];
+					if (counter%2==1)
+					{
+						context.fillText("X",730,245);
+						//a[1][2]++;
+					}
+					else
+						context.fillText("O",730,245);
+				}
+				if (cy>340 && cy<440)
+				{
+					//a[2][2]++;
+					if (counter%2==1)
+					{
+						context.fillText("X",730,345);
+						//a[2][2]++;
+					}
+					else
+						context.fillText("O",730,345);
+				}
+			}
+
+			counter  += 1;
+			check();
+		}
+
+		function check(event)
+		{
+			var bool = false;
+			if (a[0][0]==a[0][1] && a[0][1]==a[0][2])
+			{
+				if (a[0][0]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[0][0]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[1][0]==a[1][1] && a[1][1]==a[1][2])
+			{
+				if (a[1][0]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[1][0]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[2][0]==a[2][1] && a[2][1]==a[2][2])
+			{
+				if (a[2][0]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[2][0]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[0][0]==a[1][0] && a[1][0]==a[2][0])
+			{
+				if (a[0][0]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[0][0]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[0][1]==a[1][1] && a[1][1]==a[2][1])
+			{
+				if (a[0][1]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[0][1]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[0][2]==a[1][2] && a[1][2]==a[2][2])
+			{
+				if (a[0][2]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[0][2]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[0][0]==a[1][1] && a[1][1]==a[2][2])
+			{
+				if (a[0][0]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[0][0]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (a[0][2]==a[1][1] && a[1][1]==a[2][0])
+			{
+				if (a[0][2]==1)
+				{
+					alert("Player 1 wins!");
+					bool = true;
+				}
+				else if(a[0][2]==2)
+				{
+					alert("Player 2 wins!");
+					bool = true;
+				}
+			}
+
+			if (counter == 9 && bool == false)
+			{
+				alert("Match results in a draw. Press refresh to start again.");
+			}
+		}
+
+	</script>
+	<button>Clear</button>
+	<div align="center">Old but Gold. The classic tic tac toe</div>
+</body>
