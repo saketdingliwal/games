@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>GAME</title>
+	<link rel="stylesheet" href="mainc4.css"/>
 </head>
-<body>
+<body bgcolor="black">
 	<canvas id="myCanvas" width="1350" height="580"></canvas>
 	<script  type="text/javascript">
 		var canvas = document.getElementById('myCanvas');
@@ -277,11 +278,30 @@ if(x[5-k][3+k]==0){ca+=1;cb=0;}
 
 }
 
+var flag=0;
+for(var h=0;h<6;h++)
+{
+	for(var i=0;i<7;i++)
+	{
+		if(x[h][i]==5)
+			{
+				flag=1;break;
+			}
+	}
+}
+if(flag==0){
+	context.font = "50px Arial";
+	context.fillText("draw!!!",canvas.width/4,canvas.height/2);
+
+}
+
+
 
 }
 		</script>
 	<div align="center">
 		click on the column in which you wish to insert your coin!!!
+		<section id="aisehi"><a href="index.html"><div id="back">Back</div></a>
 	</div>
 </body>
 </html>
