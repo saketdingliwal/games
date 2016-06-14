@@ -2,14 +2,16 @@
 <html>
 <head>
     <title>GAME</title>
+    <link rel="stylesheet" href="mainc4.css"/>
 </head>
-<body>
+<body bgcolor = "black">
     <canvas id="myCanvas" width="1350" height="580"></canvas>
     <script  type="text/javascript">
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
         var count = 0;
         var gravity=0.009;
+        var speed=0;
         
 
         context.beginPath();
@@ -34,6 +36,8 @@ var a=[];
 for(var i=0;i<1000;i++)
 {
 a.push(Math.random());
+if(i==0){a[i]=0.5;}
+if(i!=0 && (a[i]-a[i-1]>0.6 || a[i-1]-a[i]>0.6 )){a[i]=a[i-1]+0.1;}
 if(a[i]>=.8){a[i]=a[i]/2;}  
 }
 var stelac = [];
@@ -71,18 +75,27 @@ for(var i=0;i<1000;i++)
 }
 document.onkeydown = function(e) {
     switch (e.keyCode) {
+        
         case 38:
-            bird.y-=20;
+            bird.y-=40;
             break;
         case 40:
-            bird.y+=20;
+            bird.y+=40;
             break;
-            }};           
+        case 39:
+            speed++;
+
+            }
+
+
+
+
+        };           
             
 birdMove();
 function birdMove()
         {
-                    
+                
             context.clearRect(0,1,canvas.width,canvas.height-2);// clearing only the inside of rect and not the boundary
             context.beginPath(); // drawing the main circle
             context.arc(bird.x,bird.y,bird.rad,0,2*Math.PI,true);
@@ -91,12 +104,38 @@ function birdMove()
             context.closePath();
 
             
+            var counter=0;
+
+                for(var j=0;j<1000;j++)
+                {   
+                    if(stagm[j].x<=0)
+                    {
+                        counter++;
+                    }
+                }
+                context.font = "50px Arial";
+                context.fillStyle = "white";
             
+            context.fillText(counter,50,50);
+
 
 
             
             if(bird.y-bird.rad<=0 || bird.y+bird.rad>=canvas.height)
-            {alert("game over");gameEnd();birdMove.stop();}
+            {   sleep(400);
+                context.clearRect(0,1,canvas.width,canvas.height-2);
+                context.font = "250px Arial";
+                context.fillStyle = "white";
+            
+            context.fillText(counter,3*canvas.width/8,canvas.height/2);
+             context.font = "50px Arial";
+                context.fillStyle = "white";
+                context.fillText("it is a wreck!",3*canvas.width/8,canvas.height/2+60);
+            birdMove.stop();
+
+
+
+            }
 
             var d=[];
             var e=[];
@@ -107,10 +146,10 @@ function birdMove()
             {
             context.beginPath(); // drawing the main circle
             context.rect(stelac[j].x-50,0,100,stelac[j].h);
-            context.fillStyle = "#FF0000"; // setting colour
+            context.fillStyle = "red"; // setting colour
             context.fill();
             context.rect(stagm[j].x-50,stagm[j].y-(stagm[j].h/2),100,stagm[j].h);
-            context.fillStyle = "#FF0000"; // setting colour
+            context.fillStyle = "red"; // setting colour
             context.fill();
             context.closePath();
             stelac[j].x-=4;
@@ -123,36 +162,59 @@ function birdMove()
 
 
                 }
+                
                 for(var j=0;j<1000;j+=1)
                 {
                 if(g[j]<=0 && d[j]>=0 && f[j]<=0)
-                {alert("game over");gameEnd();birdMove.stop();} 
+                {   sleep(400);
+                    context.clearRect(0,1,canvas.width,canvas.height-2);
+                context.font = "250px Arial";
+                context.fillStyle = "white";
+            
+            context.fillText(counter,3*canvas.width/8,canvas.height/2);
+            context.font = "50px Arial";
+                context.fillStyle = "white";
+                context.fillText("it is a wreck!",3*canvas.width/8,canvas.height/2+60);
+                birdMove.stop();
+                } 
                 }
 
                 for(var j=0;j<1000;j+=1)
                 {
                 if(e[j]>=0 && d[j]>=0 && f[j]<=0)
-                {alert("game over");gameEnd();birdMove.stop();} 
+                {   sleep(400);
+                    context.clearRect(0,1,canvas.width,canvas.height-2);
+                context.font = "250px Arial";
+                context.fillStyle = "white";
+            
+            context.fillText(counter,3*canvas.width/8,canvas.height/2);
+                context.font = "50px Arial";
+                context.fillStyle = "white";
+                context.fillText("it is a wreck!",3*canvas.width/8,canvas.height/2+60);
+                    birdMove.stop();
+                } 
                 }
                 
             
-            animate = setTimeout(birdMove,1000/600);// drawing 60 times every second, 1000 stands for 1000 ms
+            animate = setTimeout(birdMove,1000/(125+speed));// drawing 60 times every second, 1000 stands for 1000 ms
         }
-function gameEnd()
-{
-    for(var j=0;j<1000;j++)
-{
-if(stagm[j].x<=0)
-{count+=1;}
-else {break;}}
-    alert("the score is  "+(count-1));
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
 }
 
 
 
 </script>
     <div align="center">
-        Hello! use arrow keys to begin the fun.
+        press up and down keys to moe the ball and let it pass the rods
+        <section id="aisehi"><a href="index.html"><div id="back">Click here to go Back to main page</div></a>
+        
     </div>
 </body>
 </html>
