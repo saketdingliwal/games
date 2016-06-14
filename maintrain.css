@@ -11,6 +11,7 @@ body{
 	text-decoration: none;
 	overflow: hidden;
 	float: top;
+
 }
 .hoverable {
       cursor:default;
@@ -44,6 +45,7 @@ body{
 	background: rgba(0,0,0,0.8);
 	-webkit-transform:rotate(360deg);
 }
+
 
 #uf,#cf{
 	border-style: solid;

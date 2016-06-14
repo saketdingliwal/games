@@ -22,6 +22,7 @@
 		context.stroke();
 		context.closePath();
 		var screenshift =0;
+		document.firstElementChild.style.zoom = "reset";
 bird=
 		{
 			x:20,
@@ -82,7 +83,7 @@ function moveUp(event)
 		}
 function birdMove()
 		{
-					
+				
 			context.clearRect(0,1,canvas.width,canvas.height-2);// clearing only the inside of rect and not the boundary
 			context.beginPath(); // drawing the main circle
 			context.arc(bird.x,bird.y,bird.rad,0,2*Math.PI,true);
