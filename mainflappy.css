@@ -1,0 +1,91 @@
+body{
+	background: url("flappyback.jpg") no-repeat top left;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+	color: black;
+	font-family: Impact;
+	font-size: 32px;
+	margin-top: 1%;
+	text-decoration: none;
+	overflow: hidden;
+	
+
+
+}
+.hoverable {
+      cursor:default;
+     
+      text-decoration:none;
+    }
+    .hoverable .hover {
+      display:none;
+    }
+    .hoverable:hover .normal {
+      display:none;
+    }
+    .hoverable:hover .hover {
+      display:inline;  /* CHANGE IF FOR BLOCK ELEMENTS */
+    }
+#splayer{
+	border-style: double;
+	border-color: white;
+	border-width: 9px;
+	border-radius: 15px 15px 15px 15px;
+	padding:8px;
+	margin-right: auto;
+	margin-top: -5%;
+	margin-left: auto;
+	width:30%;
+	cursor: pointer;
+	-webkit-transition:-webkit-transform 1s,opacity 1s,height 1s;
+}
+
+#splayer:hover{
+	background: rgba(0,0,0,0.8);
+	-webkit-transform:rotate(360deg);
+}
+
+#uf,#cf{
+	border-style: solid;
+	border-color: yellow;
+	border-radius: 15px 15px 15px 15px;
+	padding: 8px;
+	height: 32%;
+	margin-top: 3px;
+	cursor: pointer;
+}
+
+#dplayer{
+	
+	border-style: double;
+	border-color: white;
+	border-width: 9px;
+	border-radius: 15px 15px 15px 15px;
+	padding:8px;
+	margin-right: auto;
+	margin-top: 27%;
+	margin-left: auto;
+	width:30%;
+	cursor: pointer;
+
+}
+#dplayer:hover{
+	font-size: 40px;
+}
+
+#aisehi>a{
+	text-decoration: none;
+	color: inherit;
+}
+#uf>a{
+	text-decoration: none;
+	color: inherit;
+}
+#cf>a{
+	text-decoration: none;
+	color: inherit;
+}
+#back:hover{
+	font-size: 40px;
+}

@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>GAME</title>
-    <link rel="stylesheet" href="mainc4.css"/>
+    <link rel="stylesheet" href="maintrain.css"/>
 </head>
-<body bgcolor = "black">
+<body>
     <canvas id="myCanvas" width="1350" height="580"></canvas>
     <script  type="text/javascript">
         var canvas = document.getElementById('myCanvas');
@@ -33,7 +33,7 @@ bird=
             rad:15
         };
 var a=[];
-for(var i=0;i<1000;i++)
+for(var i=0;i<150;i++)
 {
 a.push(Math.random());
 if(i==0){a[i]=0.5;}
@@ -50,7 +50,7 @@ rectanb=
 {
 x:50
 };stagm.push(rectanb);
-for(var i=0;i<1000;i++)
+for(var i=0;i<150;i++)
 {
     rectana=
         {
@@ -99,14 +99,14 @@ function birdMove()
             context.clearRect(0,1,canvas.width,canvas.height-2);// clearing only the inside of rect and not the boundary
             context.beginPath(); // drawing the main circle
             context.arc(bird.x,bird.y,bird.rad,0,2*Math.PI,true);
-            context.fillStyle = "#F215F2"; // setting colour
+            context.fillStyle = "white"; // setting colour
             context.fill();
             context.closePath();
 
             
             var counter=0;
 
-                for(var j=0;j<1000;j++)
+                for(var j=0;j<150;j++)
                 {   
                     if(stagm[j].x<=0)
                     {
@@ -142,14 +142,14 @@ function birdMove()
             var f=[];
             var g=[];
 
-            for(var j=1;j<1000;j++)
+            for(var j=1;j<150;j++)
             {
             context.beginPath(); // drawing the main circle
             context.rect(stelac[j].x-50,0,100,stelac[j].h);
-            context.fillStyle = "red"; // setting colour
+            context.fillStyle = "purple"; // setting colour
             context.fill();
             context.rect(stagm[j].x-50,stagm[j].y-(stagm[j].h/2),100,stagm[j].h);
-            context.fillStyle = "red"; // setting colour
+            context.fillStyle = "purple"; // setting colour
             context.fill();
             context.closePath();
             stelac[j].x-=4;
@@ -163,7 +163,7 @@ function birdMove()
 
                 }
                 
-                for(var j=0;j<1000;j+=1)
+                for(var j=0;j<150;j+=1)
                 {
                 if(g[j]<=0 && d[j]>=0 && f[j]<=0)
                 {   sleep(400);
@@ -179,7 +179,7 @@ function birdMove()
                 } 
                 }
 
-                for(var j=0;j<1000;j+=1)
+                for(var j=0;j<150;j+=1)
                 {
                 if(e[j]>=0 && d[j]>=0 && f[j]<=0)
                 {   sleep(400);
