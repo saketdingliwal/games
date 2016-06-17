@@ -4,7 +4,7 @@
 	<title>GAME</title>
 	<link rel="stylesheet" href="mainflappy.css"/>
 </head>
-<body "onload=script();">
+<body>
 	<canvas id="myCanvas" width="1350" height="580"></canvas>
 	<script  type="text/javascript">
 		
@@ -74,7 +74,7 @@ for(var i=0;i<50;i++)
 		stagm.push(rectanb);
 }			
 			
-birdMove();
+window.onload = birdMove();
 canvas.addEventListener("click",moveUp);
 function moveUp(event)
 		{
